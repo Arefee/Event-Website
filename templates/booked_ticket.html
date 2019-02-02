@@ -1,0 +1,32 @@
+{%extends 'dashboard.html'%}
+{%block menu%}
+		<div class="menu">
+		  <div class="menu-item" style="background-color:rgba(20, 41, 82,.8);"><a href="/event"><img src="{{url_for('static', filename='img/makefg.png')}}">رویدادها </a></div>
+		  <div class="menu-item"><a href="/createEvent/{{session.username}}"><img src="{{url_for('static', filename='img/event-white-icon-png-7.png')}}">ایجاد رویداد </a></div>
+		  <div class="menu-item"><a href="/setting/{{session.username}}"><img src="{{url_for('static', filename='img/settings-icon-18-256.png')}}">تنظیمات </a></div>
+		  <div class="menu-item"><a href="/logout"><img src="{{url_for('static', filename='img/makefg (1).png')}}">خروج </a></div>
+	    </div>
+{%endblock menu%}
+
+	{%block dashboardbody%}
+		<div class="title"><h2>درخواست شرکت در رویداد </h2></div>
+
+	   <div id="notification">
+		   {%for ticket in ticket%}
+			  <div class="notify">
+				  <h3 style="flex-grow: 1 ; min-width: 150px">{{ticket.username}} </h3>
+			  	<p style="flex-grow: 5">درخواست  شرکت در رویداد {{event.Titel}} را دارد .</p>
+			  	<div style="margin-bottom: 20px; flex-grow: 1">
+			  		<div class="btn-event">
+	        			<a type="href" href="#"> تایید </a>
+						<form action="{{url_for('delete_ticket', id=ticket.ticketID)}}" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<input type="submit" value="رد">
+          				</form>
+	        		</div>
+			  	</div>
+            </div>
+                {%endfor%}
+
+       </div>
+	{%endblock dashboardbody%}

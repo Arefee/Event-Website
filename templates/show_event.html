@@ -1,0 +1,109 @@
+{%extends 'dashboard.html'%}
+{%block menu%}
+		<div class="menu">
+		  <div class="menu-item" style="background-color:rgba(20, 41, 82,.8);"><a href="/event"><img src="{{url_for('static', filename='img/makefg.png')}}">رویدادها </a></div>
+		  <div class="menu-item"><a href="/createEvent/{{user.username}}"><img src="{{url_for('static', filename='img/event-white-icon-png-7.png')}}">ایجاد رویداد </a></div>
+		  <div class="menu-item"><a href="/setting/{{session.username}}"><img src="{{url_for('static', filename='img/settings-icon-18-256.png')}}">تنظیمات </a></div>
+		  <div class="menu-item"><a href="/logout"><img src="{{url_for('static', filename='img/makefg (1).png')}}">خروج </a></div>
+	    </div>
+{%endblock menu%}
+{%block dashboardbody%}
+	  	<div class="title"><h2>نمایش رویداد </h2></div>
+	  		
+	    <div id="show_event" class="show_event">
+	    	<div class="event-name">
+	    		<h2>{{event.Title}}</h2>
+	    	</div> 
+	    	<div class="Description-event">
+	    		<p>{{event.Description}}</p>
+	    	</div> 
+	    	<!--<div class="manager-event">-->
+	    		<!--<div class="manager-event-item">-->
+	    			<!--<h2>گرداننده  همایش </h2>-->
+	    			<!--<h3>پونیشا - نیما نور محمدی </h3>-->
+	    		<!--</div>-->
+	    		<!--<div class="manager-event-item">-->
+	    			<!--<img src="img/nn.jpg">-->
+	    		<!--</div>-->
+        	<!--</div>-->
+        	<div class="poster" >
+        		<div><h2>پوستر  همایش </h2></div>
+        		<img src="{{event.poster}}">
+        	</div>
+        	<!--<div id="speakers">-->
+        		<!--<h2>سخنرانان </h2>-->
+          		<!--<div class="speakers">-->
+          			<!--<div class="s-container">-->
+					  <!--<img src="img/nn.jpg" alt="Avatar" class="s-image">-->
+					  <!--<div class="overlay">-->
+					    <!--<div class="text">-->
+					    	<!--<p>نیما نور محمدی</p>-->
+					    	<!--<p>11:00-12:00</p>-->
+					    <!--</div>-->
+					  <!--</div>-->
+					<!--</div>-->
+					<!--<div class="s-container">-->
+					  <!--<img src="img/jadi.jpg" alt="Avatar" class="s-image">-->
+					  <!--<div class="overlay">-->
+					    <!--<div class="text">-->
+					    	<!--<p>جادی </p>-->
+					    	<!--<p>13:00-14:00</p>-->
+					    <!--</div>-->
+					  <!--</div>-->
+					<!--</div>-->
+					<!--<div class="s-container">-->
+					  <!--<img src="img/hm.jpg" alt="Avatar" class="s-image">-->
+					  <!--<div class="overlay">-->
+					    <!--<div class="text">-->
+					    	<!--<p>حامد تکمیل </p>-->
+					    	<!--<p> 15:15-16:00</p>-->
+					    <!--</div>-->
+					  <!--</div>-->
+					<!--</div>-->
+					<!--<div class="s-container">-->
+					  <!--<img src="img/masih.jpg" alt="Avatar" class="s-image">-->
+					  <!--<div class="overlay">-->
+					    <!--<div class="text">-->
+					    	<!--<p>مسیح مقدم </p>-->
+					    	<!--<p>14:30-15:00</p>-->
+					    <!--</div>-->
+					  <!--</div>-->
+					<!--</div>-->
+          		<!--</div>-->
+        	<!--</div>-->
+        	<div class="date">
+        		<h3>تاریخ شروع :{{event.startdate}} </h3>
+				<h3>ساعت شروع :{{event.starttime}} </h3>
+				<h3>تاریخ پایان :{{event.enddate}} </h3>
+				<h3>ساعت پایان :{{event.endtime}} </h3>
+        		<h3>مکان :{{event.place}} </h3>
+        		<h3>قیمت بلیت : {{event.Ticketprice}} </h3>
+        	</div>
+        	<!--<div id="Sponsor">-->
+        		<!--<h2>اسپانسرها </h2>-->
+	        	<!--<div class="Sponsor">-->
+	        		<!--<div class="Sponsor-item"><img src="img/maa.png"></div>-->
+	        		<!--<div class="Sponsor-item"><img src="img/it-organization.png"></div>-->
+	        		<!--<div class="Sponsor-item"><img src="img/Park.png"></div>-->
+	        	<!--</div>-->
+        	<!--</div>-->
+        	<div class="btn-event">
+				{%if session.username != 'ar_efe'%}
+				<div id="demo"><button type="button" onclick="loadDoc()">درخواست ارایه</button></div>
+        		<a type="href" href="/show_event/{{session.username}}/{{event.eventID}}/ticket">درخواست شرکت </a>
+				{%endif%}
+				{%if session.username == 'ar_efe'%}
+				<a type="href" href="/show_event/{{session.username}}/{{event.eventID}}/booked_ticket">بلیت رزرو شده</a>
+				<a type="href" href="/editEvent/{{session.username}}/{{event.eventID}}">ویرایش</a>
+				<form action="{{url_for('delete_event', id=event.eventID)}}" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+           			<input type="submit" value="حذف">
+          		</form>
+				{%endif%}
+        	</div>
+		</div>
+
+    <script type="text/javascript" src="{{url_for('static', filename='js/ticketreq.js')}}"></script>
+{%endblock dashboardbody%}
+
+

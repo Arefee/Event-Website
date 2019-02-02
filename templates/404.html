@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block body%}
+    <div class="bg"  style="background-image: url('static/img/wp2298399.jpg');"></div>
+    <header>
+        <div class="content">
+            <div class="h">
+	            <img src="{{url_for('static', filename='img/404.png')}}" style="width: 70%; padding-top: -70% ; margin-top: 50px;">
+                <p style="direction: rtl;">متاسفانه صفحه مورد نظر یافت نشد!!</p>
+                <a href="{{ url_for('index') }}" style="text-decoration: none;">بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </header>
+{%endblock body%}

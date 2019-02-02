@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{%block body%}
+<div id="mySidebar" class="sidebar">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  <div class="pro">
+	  	<div class="user-image"id="user-image">
+	  		<img  src="{{user.image}}">
+	  	</div>
+	  	<div class="user-name">
+	  		<p>{{session.username}}</p>
+	  	</div>
+	  </div>
+    {%block menu%}{%endblock menu%}
+	</div>
+    <div id="main">
+		<div class="nav_menu">
+			<div class="nav_menu_item">
+				<div class="openbtn">
+		 			<button onclick="openNav()" style=" background-color: #162634 !important;font-size: 25px; border: none; color: white"> ☰ </button>
+		 		</div>
+	 		</div>
+	 		<div class="nav_menu_item">
+		 		<div class="dropdown">
+		 			<a onclick="myFunction()" href="/event/notification/{{session.username}}" class="notification">
+					  <span><img src="{{url_for('static', filename='img/on_color_large.png')}}" width="20px" height="20px">پیام ها </span>
+					  <span class="badge">3</span>
+					</a>
+					<!--<div id="Demo" class="dropdown-content">-->
+				      <!--<a href="#" ><span><h4>عارفه</h4>همایش فریلند تایید شد .</span></a>-->
+				      <!--<a href="#" ><span><h4>عارفه</h4>همایش فریلند تایید شد .</span></a>-->
+				      <!--<a href="#" ><span><h4>عارفه</h4>همایش فریلند تایید شد .</span></a>-->
+				      <!--<a href="#" ><span><h4>عارفه</h4>همایش فریلند تایید شد .</span></a>-->
+				      <!--<a href="#" ><span><h4>عارفه</h4>همایش فریلند تایید شد .</span></a>-->
+				      <!--<a href="#" ><span><h4>عارفه</h4>همایش فریلند تایید شد .</span></a>-->
+				    <!--</div>-->
+		 		</div>
+		 	</div>
+	  	</div>
+        {%block dashboardbody%}{%endblock dashboardbody%}
+    </div>
+	<script type="text/javascript" src="{{url_for('static', filename='js/toggleSidebar.js')}}"></script>
+{%endblock body%}

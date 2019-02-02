@@ -1,0 +1,80 @@
+{%extends 'dashboard.html'%}
+{%block menu%}
+		<div class="menu">
+		  <div class="menu-item" ><a href="/event"><img src="{{url_for('static', filename='img/makefg.png')}}">رویدادها </a></div>
+		  <div class="menu-item"><a href="/createEvent/{{user.username}}"><img src="{{url_for('static', filename='img/event-white-icon-png-7.png')}}">ایجاد رویداد </a></div>
+		  <div class="menu-item"style="background-color:rgba(20, 41, 82,.8);"><a href="/setting/{{session.username}}"><img src="{{url_for('static', filename='img/settings-icon-18-256.png')}}">تنظیمات </a></div>
+		  <div class="menu-item"><a href="/logout"><img src="{{url_for('static', filename='img/makefg (1).png')}}">خروج </a></div>
+	    </div>
+{%endblock menu%}
+{%block dashboardbody%}
+
+	  	<div class="title"><h2>تنظیمات </h2></div>		
+	   <div class="setting">
+
+	   		<div class="settingCloumn" style="min-width: 350px">
+				<div class="pro-img" >
+	   	 			<div>
+					<img  src="{{user.image}}" >
+					</div>
+						<a class="button" href="/setting/{{session.username}}/upload">عکس جدید</a>
+				</div>
+
+			</div>
+
+			<div class="settingCloumn" >
+				<form method="POST">
+                    {% from "include/_formhelper.html" import render_field %}
+			   	<div class="setting_item">
+			   		<span>
+			   			<label> نام </label>
+			   			{{ render_field(form.name , class="form-control" , dir="rtl", style="width: 80%") }}
+			   		</span>
+			   	</div>
+			   	<div class="setting_item">
+			   		<span>
+			   			<label>نام خانوادگی </label>
+						{{ render_field(form.lastname , class="form-control", dir="rtl", style="width: 80%") }}
+			   		</span>
+			   	</div>
+			   	<!--<div class="setting_item">-->
+			   		<!--<span>-->
+			   			<!--<label>نام کاربری  </label>-->
+						<!--{{ render_field(form.username , class="form-control", dir="rtl", style="width: 80%") }}-->
+			   		<!--</span>-->
+			   	<!--</div>-->
+			   	<div class="setting_item">
+			   		<span>
+			   			<label>ایمیل </label>
+						{{ render_field(form.email , class="form-control", placeholder="ایمیل " , dir="rtl", style="width: 80%") }}
+			   		</span>
+			   	</div>
+			   	<div class="forml">
+	                    <div style="width: 100%;">
+	                        <button class="button">ثبت</button>
+	                    </div>
+	            </div>
+					</form>
+	            <br>
+	            <div class="setting_item">
+			   		<span>
+			   			<label>رمز عبور</label>
+			   			<input type="password"  class="form-control_" dir="rtl" style="width: 80%" placeholder="رمز عبور جدید خود را وارد کنید" required="" />
+			   		</span>
+			   	</div>
+			   	<div class="setting_item">
+			   		<span>
+			   			<label>تکرار رمز عبور</label>
+			   			<input type="password"  class="form-control_" dir="rtl" style="width: 80%" placeholder="رمز عبور جدید خود را تکرارکنید" required="" />
+			   		</span>
+			   	</div>
+			   	<div class="forml">
+	                    <div style="width: 100%;">
+	                        <button class="button">ثبت</button>
+	                    </div>
+	            </div>
+
+			</div>
+		   {%include 'include/_masseges.html'%}
+	   </div> 
+{%endblock dashboardbody%}

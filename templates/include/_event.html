@@ -1,0 +1,11 @@
+{%for event in event%}
+<div class="nextevent">
+			      <img src="{{event.poster}}" style="width:100%">
+			      <div class="container">
+			        <h3>{{event.Title}}</h3>
+			        <p>زمان :{{event.startdate}}</p>
+              		<p>مکان : {{event.place}}</p>
+			        <a type="button" class="button-event" href="/show_event/{{session.username}}/{{event.eventID}}">نمایش و تهیه بلیت </a>
+			      </div>
+</div>
+{%endfor%}

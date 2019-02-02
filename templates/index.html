@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%block body%}
+    <div class="topnav" id="myTopnav">
+        <a href="#Introduction">معرفی سایت </a>
+        <a href="#events" href="/allevents">رویدادها</a>
+        <a  href="/login">ورود اعضا </a>
+        <a href="/register">عضویت </a>
+        <a href="#Admin_introduce">تماس با من</a>
+        <a href="Topnav:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+</div>
+    <div class="bg"></div>
+    <header>
+        <div class="content" style="top:30%;">
+          <div class="h">
+            <h1>مدیریت  همایش ها و کنفرانس ها </h1>
+            <h3>ایجاد و  شرکت در رویداد </h3>
+          </div>
+        </div>
+    </header>
+
+    <div class="layout" >
+      <div class="part">
+        <div id="Introduction">
+          <h1>معرفی سایت </h1>
+          <div class="introduce">
+            <p style="direction: rtl;">این وبسایت جهت مدیریت همایش ها و کنفرانس هاست . شما می توانید با عضویت  در این وبسایت به سادگی رویدادتان را ایجاد کرده و -ضمن دریافت یک صفحه با آدرس اختصاصی- اطلاعات مختلفی مثل زمان برگزاری، مکان رویداد و قیمت بلیت‌ها و سایر مشخصات رویداد را در معرض دید مخاطبین قرار دهید. و یا در کنفرانس ها و همایش های پیش رو با تهیه ی بلیت شرکت نمایید . </p>
+          </div>
+        </div>
+      </div>
+      <div class="part">
+        <h1>رویداد ها</h1>
+        <div id="events" class="event">
+        {%include 'include/_event.html'%}
+        </div>
+      </div>
+      <div class="part">
+        <div id="Admin_introduce">
+          <h1>تماس با من</h1>
+          <div class="introduce">
+            <div class="introduce-item">
+              <img src="{{url_for('static',filename='img/photo_۲۰۱۸-۰۱-۳۰_۲۳-۰۲-۴۸.jpg')}}">
+            </div>
+            <div class="introduce-item">
+            <p > عارفه حمیدی </p>
+            <p>arefehamidi.guilan@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="{{url_for('static', filename='img/house-top-icon-12.png')}}"></button>
+
+    <script type="text/javascript" src="{{url_for('static', filename='js/top.js')}}"></script>
+ {%endblock body%}

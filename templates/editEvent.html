@@ -1,0 +1,82 @@
+{%extends 'dashboard.html'%}
+{%block menu%}
+		<div class="menu">
+		  <div class="menu-item"><a href="/event"><img src="{{url_for('static', filename='img/makefg.png')}}">رویدادها </a></div>
+          <div class="menu-item" style="background-color:rgba(20, 41, 82,.8);"><a href="/editEvent/{{user.username}}"><img src="{{url_for('static', filename='img/event-white-icon-png-7.png')}}">ویرایش رویداد </a></div>
+		  <div class="menu-item" ><a href="/createEvent/{{user.username}}"><img src="{{url_for('static', filename='img/event-white-icon-png-7.png')}}">ایجاد رویداد </a></div>
+		  <div class="menu-item"><a href="/setting/{{session.username}}"><img src="{{url_for('static', filename='img/settings-icon-18-256.png')}}">تنظیمات </a></div>
+		  <div class="menu-item"><a href="/logout"><img src="{{url_for('static', filename='img/makefg (1).png')}}">خروج </a></div>
+	    </div>
+{%endblock menu%}
+
+{%block dashboardbody%}
+	  	<div class="title"><h2>ویرایش رویداد</h2></div>
+
+	   <div class="createEvent">
+		   <form method="POST" action="">
+
+			   {% from "include/_formhelper.html" import render_field %}
+		   	<div class="event-form-item">
+		   		<span>
+		   			<label> عنوان رویداد </label>
+					{{ render_field(form.title , class="form-control_" , placeholder="عنوان رویداد " , dir="rtl") }}
+		   		</span>
+		   	</div>
+		   	<div class="event-form-item" >
+		   		<span>
+		   			<label> تاریخ شروع </label>
+					<input name="startdate" type="date" class="form-control_ " >
+		   		</span>
+		   	</div>
+		   	<div class="event-form-item" >
+		   		<span>
+		   			<label> تاریخ پایان </label>
+					<input name="enddate" type="date" class="form-control_ " >
+		   		</span>
+		   	</div>
+		   	<div class="event-form-item" >
+		   		<span>
+		   			<label> ساعت شروع </label>
+					<input name="starttime" type="time" class="form-control_ ">
+		   		</span>
+		   	</div>
+		   	<div class="event-form-item" >
+		   		<span>
+		   			<label> ساعت پایان </label>
+					<input name="endtime" type="time" class="form-control_ ">
+		   		</span>
+		   	</div>
+		   	<div class="event-form-item" >
+		   		<span>
+		   			<label> قیمت  بلیت </label>
+					{{ render_field(form.ticketprice , class="form-control_" ) }}
+		   		</span>
+		   	</div>
+		   	<!--<div class="event-form-item" >-->
+		   		<!--<span>-->
+		   			<!--<label> اسپانسر </label>-->
+		   			<!--<input type="file"  enctype="multipart/form-data" class="select-image" multiple>-->
+		   		<!--</span>-->
+		   	<!--</div>-->
+		   	<div class="event-form-item">
+		   		<span>
+		   			<label>مکان </label>
+					{{ render_field(form.place , class="form-control" , dir="rtl") }}
+		   		</span>
+		   	</div>
+		   	<div class="event-form-item">
+		   		<span>
+		   			<label> توضیحات</label>
+					{{ render_field(form.description , class="form-control" ,  dir="rtl") }}
+		   		</span>
+		   	</div>
+		   	<div class="forml">
+                  <div style="width: 100%;">
+                      <button class="button">ثبت</button>
+                    </div>
+                </div>
+			   </form>
+		   <a class="button" href="/editEvent/{{session.username}}/{{event.eventID}}/upload">عکس جدید</a>
+		   {%include 'include/_masseges.html'%}
+	   </div>
+{%endblock dashboardbody%}

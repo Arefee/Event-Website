@@ -1,0 +1,27 @@
+{%extends 'dashboard.html'%}
+{%block menu%}
+		<div class="menu">
+		  <div class="menu-item" ><a href="/event"><img src="{{url_for('static', filename='img/makefg.png')}}">رویدادها </a></div>
+		  <div class="menu-item"><a href="/createEvent/{{user.username}}"><img src="{{url_for('static', filename='img/event-white-icon-png-7.png')}}">ایجاد رویداد </a></div>
+		  <div class="menu-item"style="background-color:rgba(20, 41, 82,.8);"><a href="/setting/{{session.username}}"><img src="{{url_for('static', filename='img/settings-icon-18-256.png')}}">تنظیمات </a></div>
+		  <div class="menu-item"><a href="/logout"><img src="{{url_for('static', filename='img/makefg (1).png')}}">خروج </a></div>
+	    </div>
+{%endblock menu%}
+{%block dashboardbody%}
+
+	  	<div class="title"><h2>تنظیمات </h2></div>
+	   <div class="setting">
+
+                      <div class="settingCloumn" style="min-width: 350px">
+	   	 		<div class="pro-img" >
+	   	 			<div>
+					<img  src="{{user.image}}" >
+					</div>
+	  					<form method=post enctype=multipart/form-data>
+                          <input type=file name=file>
+                          <input type=submit value=Upload>
+                        </form>
+				</div>
+			</div>
+       </div>
+           {%endblock dashboardbody%}

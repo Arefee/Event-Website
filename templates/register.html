@@ -1,0 +1,71 @@
+{%extends 'base.html'%}
+{%block body%}
+  	<div class="topnav" id="myTopnav">
+        <a href="/">صفحه اصلی </a>
+        <a href="/login">ورود اعضا </a>
+        <a href="Topnav:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <div class="bg"></div>
+    <header>
+        <div class="content">
+            <div class="h">
+	            <h1>عضویت </h1>
+	            <div class="login">
+                    {%include 'include/_masseges.html'%}
+                    {% from "include/_formhelper.html" import render_field %}
+                    <form method="POST" action="">
+                    <div class="forml">
+                        <div class="input-addon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        {{ render_field(form.name , class="form-control" , placeholder="نام" , dir="rtl") }}
+                    </div>
+                    <div class="forml">
+                        <div class="input-addon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        {{ render_field(form.lastname , class="form-control" , placeholder="نام خانوادگی" , dir="rtl") }}
+                    </div>
+                        <div class="forml">
+                            <div class="input-addon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                            {{ render_field(form.username , class="form-control" , placeholder="نام کاربری", dir="rtl") }}
+                        </div>
+                    <div class="forml">
+                        <div class="input-addon">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                          {{ render_field(form.email , class="form-control", placeholder="ایمیل " , dir="rtl") }}
+                    </div>
+                        <div class="forml">
+                            <div class="input-addon">
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            </div>
+                            {{ render_field(form.password , class="form-control" , placeholder="رمز ورود" , dir="rtl") }}
+                        </div>
+                    <div class="forml">
+                        <div class="input-addon">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        </div>
+                        {{ render_field(form.confirm , class="form-control" , placeholder="تکرار رمر ورود " , dir="rtl") }}
+                    </div>
+                    <div class="forml">
+                      <div style="width: 100%;">
+                          <input class="button" type="submit" value="ثبت">
+                        </div>
+                    </div>
+                        <div class="forml">
+                            <div class="separator">
+                                <p class="change_link">آیا قبلا ثبت نام کرده اید ؟ </p>
+                                <a href="/login" class="to_register" style="color: #002B5F ; font-size: 14px"> ورود به سیستم </a>
+                            </div>
+                        </div>
+                    </form>
+	        	</div>
+            </div>
+        </div>
+    </header>
+{%endblock body%}
